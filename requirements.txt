@@ -1,0 +1,4 @@
+python-dotenv
+asyncpg
+aiogram
+mysql-connector-python
