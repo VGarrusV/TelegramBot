@@ -12,6 +12,13 @@ import database
 # txt = ["Cнегурочка", "Дед Мороз", "Тамада", "Ведущий на выпускной"]
 # init_states = ["False", "False", "False", "False"]
 
+# Общие комментарии по будущим изменениям: попробовать ужать хэндлеры до минимального размера, уменьшить их кол-во.
+# Возможно раскидать хэндлеры по разным файлам, разделить структуру на две ветки - Заказчик и исполнитель.
+# По внешнему виду - написать нормальный текст ко всем кнопкам, описание и т.д. Возможно сделать пару отдельных
+# Хендлеров, которые будут в самом начале выводить общую информацию о боте. Далее по каждому хендрелу кокренто.
+
+# Тут более менее, надо Добавить более общее описание, и возможно отвязать кнопку choice от команды start, чтобы опи-
+# сание не выскакивало каждый раз.
 @dp.message_handler(Command("start"), state="*")
 async def greeting(message: Message, state=FSMContext):
     await state.finish()
@@ -26,7 +33,7 @@ async def categories(call: CallbackQuery):
     await bot.answer_callback_query(callback_query_id=call.id)
     await call.message.edit_reply_markup(reply_markup=cats)
 
-
+# Хороший пример генерализации хендлера, здесь 4 кнопки сразу обрабатывается.
 @dp.callback_query_handler(text_contains="cust")
 async def categories(call: CallbackQuery):
     string = call.data.split("cust_")
@@ -46,6 +53,7 @@ async def categories(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=create_keyboard(txt, init_states))
 
 
+# Тут идут 4 хендлера на все 4 категории. Думаю возможно придумать способ генерализации.
 @dp.callback_query_handler(text_contains="Cнегурочка")
 async def customer_choice(call: CallbackQuery):
     await bot.answer_callback_query(callback_query_id=call.id)
@@ -124,7 +132,8 @@ async def get_insta(message: Message, state=FSMContext):
                               "нажмите \n /next.")
     await PerformerData.next()
 
-
+# Главный хэндлер записывающий в базу. Тут можно скорее всего поменять способ который составляет отчет report, больно
+# много там if и так далее. Скорее всего есть хороший питоновский способ таких операций.
 @dp.message_handler(state=PerformerData.D3)
 async def answer_d2(message: Message, state: FSMContext):
     data = await state.get_data()
@@ -180,7 +189,10 @@ async def customer_choice(call: CallbackQuery):
     await bot.answer_callback_query(callback_query_id=call.id)
     await call.message.edit_reply_markup(reply_markup=choice)
 
-
+# Этот хендлер относится только ко второй ветке, то есть к стороне потребителя. Возможно выделить его в отдельный модуль
+# но не знаю правильно ли будет диспатчер приходить в main.
+# Здесь нужно добавить некоторым образом картинки в инлайн меню, например, если пользователь оставляет ссылку на инста-
+# грам, через его апи скачивать аватарку и пихать в тамб сюда.
 @dp.inline_handler()
 async def query_text(query: types.InlineQuery):
     tables = ['snow_maidens', 'santas', 'toastmasters', 'prom_presenters']

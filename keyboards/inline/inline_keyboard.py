@@ -26,7 +26,8 @@ cats = InlineKeyboardMarkup(
     ]
 )
 
-
+# возможно стоит написать более продвинутый класс кнопок, чтобы можно было упростить хендлеры, а в дальнейшем это можно
+# использовать при создании каких угодно ботов.
 def create_button(txt, state):
     if state == "True":
         button = InlineKeyboardButton(text='\u2611 ' + txt, callback_data=f"{txt}:False")
