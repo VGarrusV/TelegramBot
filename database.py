@@ -72,12 +72,12 @@ if __name__ == '__main__':
     #     elif data[2] == "https://www.instagram.com/vgarrusv/":
     #         print('ok the second')
 
-    add_user('toastmasters', 203720323, 'Марат', '+79153335231', 'marat@mail.com',
-             'https://www.instagram.com/marat_sultanof/')
-    add_user('toastmasters', 203723323, 'Алексей', '+79343335231', 'alex@mail.com',
-             'https://www.instagram.com/alexbelov/')
-    add_user('toastmasters', 103720323, 'Андрей', '+79333335231', 'adnrei@mail.com',
-             'https://www.instagram.com/barabanov_andrei/')
+    # add_user('toastmasters', 203720323, 'Марат', '+79153335231', 'marat@mail.com',
+    #          'https://www.instagram.com/marat_sultanof/')
+    # add_user('toastmasters', 203723323, 'Алексей', '+79343335231', 'alex@mail.com',
+    #          'https://www.instagram.com/alexbelov/')
+    # add_user('toastmasters', 103720323, 'Андрей', '+79333335231', 'adnrei@mail.com',
+    #          'https://www.instagram.com/barabanov_andrei/')
     # add_user('santas', 10372034, 'Иван Сидоров', 'sidorov@mail.com', 'sidorovinsta')
     # add_user('santas', 30372034, 'Иван Петров', 'petrov@mail.com', 'petrovinsta')
     # add_user('santas', 40372034, 'Иван Крылов', 'krilov@mail.com', 'krilovinsta')
@@ -85,10 +85,10 @@ if __name__ == '__main__':
     # add_user('santas', 60372034, 'Иван Бунин', 'bunin@mail.com', 'bunininsta')
     # add_user('santas', 70372034, 'Иван Жиглов', 'zhiglov@mail.com', 'zhiglovinsta')
     # if status:
-    # create_db("toastmasters")
-    # create_db("snow_maidens")
-    # create_db("santas")
-    # create_db("prom_presenters")
+    create_db("toastmasters")
+    create_db("snow_maidens")
+    create_db("santas")
+    create_db("prom_presenters")
     #     print('user already exists')")
     # create_db("santas")
     # create_db("prom_presenters")
